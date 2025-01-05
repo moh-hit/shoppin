@@ -8061,6 +8061,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-native-flexible-grid@npm:^0.2.3":
+  version: 0.2.3
+  resolution: "react-native-flexible-grid@npm:0.2.3"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: 35ef5651fd4ac63688b6d0b81d2b7703530f5fb650fdaf1428f99ddc5712eb4d8a08b9ee26a641dae4ae870341142a629f9f2b53b51c53e12ae7f2ca19b6b29e
+  languageName: node
+  linkType: hard
+
 "react-native-gesture-handler@npm:^2.21.2":
   version: 2.21.2
   resolution: "react-native-gesture-handler@npm:2.21.2"
@@ -8830,6 +8840,7 @@ __metadata:
     prettier: 2.8.8
     react: 18.3.1
     react-native: 0.76.5
+    react-native-flexible-grid: ^0.2.3
     react-native-gesture-handler: ^2.21.2
     react-native-pager-view: ^6.6.1
     react-native-reanimated: ^3.16.6
