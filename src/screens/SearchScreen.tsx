@@ -6,10 +6,11 @@ import COLORS from '../utils/colors';
 import {FONT_FAMILY} from '../utils/consts';
 
 const RECENT_SEARCHES = [
-  'Covid-19',
-  'Covid-19 vaccine',
-  'Covid-19 symptoms',
-  'Covid-19 news',
+  'Red checkered shirt amazon',
+  'Blue jeans myntra levis',
+  'Black jacket denim',
+  'White sneakers nike limited edition',
+  'Green scarf',
 ];
 
 const renderSearchHeader = () => (
@@ -35,7 +36,12 @@ const SearchScreen = () => {
             <View style={styles.recentIconContainer}>
               <Icon name="clock-outline" size={18} color={COLORS.secondary} />
             </View>
-            <Text style={styles.recentSearchText}>{item}</Text>
+            <Text
+              style={styles.recentSearchText}
+              ellipsizeMode="tail"
+              numberOfLines={1}>
+              {item}
+            </Text>
           </View>
         )}
         contentContainerStyle={styles.recentSearchContainer}

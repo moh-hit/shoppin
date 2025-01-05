@@ -22,9 +22,7 @@ const TabBarLabel = ({focused, children}: TTabBarLabel) => {
   return (
     <View style={styles.labelContainer}>
       <Image source={icon} style={styles.tabIcon} />
-      <Text style={{color: COLORS.text, fontFamily: FONT_FAMILY.REGULAR}}>
-        {children}
-      </Text>
+      <Text style={styles.label}>{children}</Text>
     </View>
   );
 };
@@ -39,7 +37,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.dark,
     height: 44,
     paddingHorizontal: 8,
-    borderRadius: 12,
+    borderRadius: 10,
   },
   inActiveLabelContainer: {
     flexDirection: 'row',
@@ -48,7 +46,12 @@ const styles = StyleSheet.create({
     minWidth: 30,
   },
   tabIcon: {
-    width: 16,
-    height: 16,
+    width: 18,
+    height: 18,
+  },
+  label: {
+    color: COLORS.text,
+    fontFamily: FONT_FAMILY.REGULAR,
+    fontSize: 16,
   },
 });

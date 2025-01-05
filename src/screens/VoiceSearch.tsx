@@ -1,5 +1,11 @@
-import {View, StyleSheet, TouchableOpacity} from 'react-native';
-import React from 'react';
+import {
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  Platform,
+  ToastAndroid,
+} from 'react-native';
+import React, {useEffect} from 'react';
 import LottieView from 'lottie-react-native';
 import {voice_search} from '../assets';
 import {Text} from '@react-navigation/elements';
@@ -14,6 +20,15 @@ const VoiceSearch = () => {
   const onPressBack = () => {
     navigation.goBack();
   };
+
+  useEffect(() => {
+    if (Platform.OS === 'android') {
+      ToastAndroid.show(
+        "It's ok, you can humm your song here nobody is listening...",
+        5000,
+      );
+    }
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -33,7 +48,6 @@ const VoiceSearch = () => {
           source={voice_search}
           autoPlay
           loop
-          duration={10000}
           style={styles.voiceSearchLottie}
         />
         <View style={styles.searchSongPill}>

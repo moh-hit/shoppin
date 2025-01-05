@@ -1,4 +1,10 @@
-import {View, Text, StyleSheet} from 'react-native';
+import {
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  ToastAndroid,
+  Platform,
+} from 'react-native';
 import React, {useMemo} from 'react';
 import {FONT_FAMILY} from '../utils/consts';
 import COLORS from '../utils/colors';
@@ -25,11 +31,18 @@ const Avatar = ({name, size = 36}: TAvatar) => {
     };
   }, [name]);
 
+  const onPressAvatar = () => {
+    if (Platform.OS === 'android') {
+      ToastAndroid.show('This feature will take up some more time', 2000);
+    }
+  };
+
   return (
-    <View
+    <TouchableOpacity
+      onPress={onPressAvatar}
       style={[styles.container, {backgroundColor, width: size, height: size}]}>
       <Text style={styles.initial}>{initial}</Text>
-    </View>
+    </TouchableOpacity>
   );
 };
 

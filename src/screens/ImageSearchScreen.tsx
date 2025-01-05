@@ -1,5 +1,5 @@
-import {View, StyleSheet, Text} from 'react-native';
-import React from 'react';
+import {View, StyleSheet, Text, Platform, ToastAndroid} from 'react-native';
+import React, {useEffect} from 'react';
 import {RootStackParamList} from '../../App';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import SearchInput from '../components/Home/SearchInput';
@@ -50,6 +50,16 @@ const CATEGORY_TABS = [
 
 const ImageSearchScreen = ({route}: Props) => {
   const {imageUrl} = route.params;
+
+  useEffect(() => {
+    if (Platform.OS === 'android') {
+      ToastAndroid.show(
+        'Image scraping/reverse search doesnt work right now',
+        2000,
+      );
+    }
+  }, []);
+
   return (
     <View style={styles.container}>
       <SearchInput image={imageUrl} compact />

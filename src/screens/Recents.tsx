@@ -1,10 +1,15 @@
 import {View, Text, StyleSheet} from 'react-native';
 import React from 'react';
+import COLORS from '../utils/colors';
+import {FONT_FAMILY} from '../utils/consts';
 
 const Recents = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Recents</Text>
+      <Text style={styles.title}>Recents</Text>
+      <Text style={styles.description}>
+        Will take this up in new shoppin jira task
+      </Text>
     </View>
   );
 };
@@ -14,10 +19,16 @@ export default Recents;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    paddingHorizontal: 16,
+    gap: 12,
   },
-  text: {
-    color: 'red',
+  title: {
+    color: COLORS.text,
+    fontFamily: FONT_FAMILY.BOLD,
+    fontSize: 20,
+  },
+  description: {
+    color: COLORS.secondary,
+    fontFamily: FONT_FAMILY.REGULAR,
   },
 });

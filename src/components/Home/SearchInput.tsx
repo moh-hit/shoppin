@@ -4,8 +4,10 @@ import {
   StyleSheet,
   TouchableOpacity,
   Image,
+  ToastAndroid,
+  Platform,
 } from 'react-native';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import COLORS from '../../utils/colors';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {CommonActions, useNavigation} from '@react-navigation/native';
@@ -13,6 +15,7 @@ import Animated from 'react-native-reanimated';
 import {FONT_FAMILY} from '../../utils/consts';
 import {google} from '../../assets';
 import Avatar from '../Avatar';
+import {useDebounce} from '../../utils/useDebounce';
 
 interface TSearchInput {
   compact?: boolean;
@@ -21,8 +24,17 @@ interface TSearchInput {
 }
 
 const SearchInput = ({compact, placeholder, image}: TSearchInput) => {
+  const [query, setQuery] = useState('');
+
   const inputRef = React.useRef<TextInput>(null);
   const navigation = useNavigation();
+  const searchQuery = useDebounce(query, 2000);
+
+  useEffect(() => {
+    if (Platform.OS === 'android' && searchQuery.length > 1) {
+      ToastAndroid.show('This isnt connected with any api right now', 2000);
+    }
+  }, [searchQuery]);
 
   const onFocusInput = () => {
     if (compact) {
@@ -85,6 +97,7 @@ const SearchInput = ({compact, placeholder, image}: TSearchInput) => {
           style={[styles.input, compact && styles.compactInput]}
           placeholderTextColor={COLORS.secondary}
           onFocus={onFocusInput}
+          onChangeText={setQuery}
         />
         {image ? (
           <Avatar name="Mohit K" size={36} />
