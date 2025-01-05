@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 16,
     gap: 12,
+    backgroundColor: COLORS.fill,
   },
   title: {
     color: COLORS.text,
