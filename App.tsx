@@ -7,12 +7,14 @@ import Recents from './src/screens/Recents';
 import Notifications from './src/screens/Notifications';
 import More from './src/screens/More';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import {StyleSheet, View} from 'react-native';
+import {Platform, StatusBar, StyleSheet, View} from 'react-native';
 import COLORS from './src/utils/colors';
 import {
   SafeAreaProvider,
   useSafeAreaInsets,
 } from 'react-native-safe-area-context';
+import SearchScreen from './src/screens/SearchScreen';
+import VoiceSearch from './src/screens/VoiceSearch';
 
 type TTabIcon = {
   focused: boolean;
@@ -34,7 +36,7 @@ const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 function Tabs() {
-  const insets = useSafeAreaInsets();
+  const showLabel = Platform.OS !== 'ios';
   return (
     <Tab.Navigator
       screenOptions={({route}) => ({
@@ -42,14 +44,15 @@ function Tabs() {
         tabBarStyle: {
           backgroundColor: COLORS.background,
           borderTopWidth: 0,
+          paddingTop: 4,
+          height: 60,
         },
         sceneStyle: {
           backgroundColor: COLORS.fill,
-          paddingTop: insets.top,
         },
         tabBarActiveTintColor: COLORS.primary,
         tabBarInactiveTintColor: COLORS.secondary,
-        tabBarShowLabel: false,
+        tabBarShowLabel: showLabel,
         tabBarIcon: ({color, size, focused}) => {
           switch (route.name) {
             case 'Home':
@@ -80,12 +83,24 @@ function Tabs() {
 }
 
 const AppStack = () => {
+  const insets = useSafeAreaInsets();
+
   return (
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
+        animationTypeForReplace: 'push',
+        animation: 'fade',
+        contentStyle: {
+          backgroundColor: COLORS.fill,
+          paddingTop: insets.top,
+        },
       }}>
-      <Stack.Screen name="Tabs" component={Tabs} />
+      <Stack.Screen name="HomeScreen" component={Tabs} />
+      <Stack.Group screenOptions={{presentation: 'fullScreenModal'}}>
+        <Stack.Screen name="SearchScreen" component={SearchScreen} />
+        <Stack.Screen name="VoiceSearch" component={VoiceSearch} />
+      </Stack.Group>
     </Stack.Navigator>
   );
 };
@@ -93,6 +108,7 @@ const AppStack = () => {
 export default function App() {
   return (
     <SafeAreaProvider>
+      <StatusBar backgroundColor={COLORS.fill} barStyle="light-content" />
       <NavigationContainer>
         <AppStack />
       </NavigationContainer>

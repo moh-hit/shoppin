@@ -11,6 +11,7 @@ const SearchTab = () => {
   return (
     <ScrollView
       contentContainerStyle={styles.container}
+      showsVerticalScrollIndicator={false}
       stickyHeaderIndices={[1]}>
       <Image source={google_text} style={styles.googleIcon} />
       <SearchInput />

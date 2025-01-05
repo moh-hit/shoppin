@@ -5,4 +5,6 @@ import news1 from './home-news/news1.png';
 import news2 from './home-news/news2.png';
 import news3 from './home-news/news3.png';
 
-export {google, gemini, google_text, news1, news2, news3};
+import voice_search from './lottie/voice-search.json';
+
+export {google, gemini, google_text, news1, news2, news3, voice_search};
