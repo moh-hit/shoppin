@@ -2,6 +2,7 @@ import {View, Text, Image, StyleSheet} from 'react-native';
 import React from 'react';
 import {gemini, google} from '../../assets';
 import COLORS from '../../utils/colors';
+import {FONT_FAMILY} from '../../utils/consts';
 
 type TTabBarLabel = {
   focused: boolean;
@@ -21,7 +22,9 @@ const TabBarLabel = ({focused, children}: TTabBarLabel) => {
   return (
     <View style={styles.labelContainer}>
       <Image source={icon} style={styles.tabIcon} />
-      <Text style={{color: COLORS.text}}>{children}</Text>
+      <Text style={{color: COLORS.text, fontFamily: FONT_FAMILY.REGULAR}}>
+        {children}
+      </Text>
     </View>
   );
 };

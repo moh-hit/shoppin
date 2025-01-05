@@ -2,6 +2,7 @@ import {View, Text, StyleSheet, FlatList} from 'react-native';
 import React from 'react';
 import COLORS from '../../utils/colors';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import {FONT_FAMILY} from '../../utils/consts';
 
 const STATS_CARDS = [
   {
@@ -77,10 +78,12 @@ const styles = StyleSheet.create({
   value: {
     fontSize: 16,
     color: COLORS.text,
+    fontFamily: FONT_FAMILY.REGULAR,
   },
   name: {
     fontSize: 12,
     color: COLORS.text,
+    fontFamily: FONT_FAMILY.LIGHT,
   },
   valueRow: {
     flexDirection: 'row',

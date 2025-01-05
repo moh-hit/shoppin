@@ -2,6 +2,7 @@ import {View, Text, FlatList, Image, StyleSheet} from 'react-native';
 import React from 'react';
 import {news1, news2, news3} from '../../assets';
 import COLORS from '../../utils/colors';
+import {FONT_FAMILY} from '../../utils/consts';
 
 const NEWS = [
   {
@@ -63,10 +64,11 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     color: COLORS.text,
-    fontWeight: 'bold',
+    fontFamily: FONT_FAMILY.REGULAR,
     marginVertical: 8,
   },
   source: {
     color: COLORS.secondary,
+    fontFamily: FONT_FAMILY.REGULAR,
   },
 });

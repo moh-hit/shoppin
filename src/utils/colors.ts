@@ -8,6 +8,7 @@ const COLORS = {
   text: '#FFFFFF',
   border: '#3A3A3A',
   yellow: '#ffff54',
+  transparent: 'transparent',
 };
 
 export default COLORS;

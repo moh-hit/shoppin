@@ -3,6 +3,7 @@ import React from 'react';
 import SearchInput from '../components/Home/SearchInput';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import COLORS from '../utils/colors';
+import {FONT_FAMILY} from '../utils/consts';
 
 const RECENT_SEARCHES = [
   'Covid-19',
@@ -68,7 +69,8 @@ const styles = StyleSheet.create({
   },
   recentSearchText: {
     color: COLORS.text,
-    fontSize: 12,
+    fontSize: 14,
+    fontFamily: FONT_FAMILY.MEDIUM,
   },
   searchHistoryHeader: {
     flexDirection: 'row',
@@ -79,11 +81,12 @@ const styles = StyleSheet.create({
   },
   searchHistoryText: {
     color: COLORS.secondary,
+    fontFamily: FONT_FAMILY.REGULAR,
     fontSize: 12,
   },
   manageHistory: {
     color: COLORS.secondary,
+    fontFamily: FONT_FAMILY.MEDIUM,
     fontSize: 10,
-    fontWeight: 'medium',
   },
 });

@@ -15,6 +15,9 @@ import {
 } from 'react-native-safe-area-context';
 import SearchScreen from './src/screens/SearchScreen';
 import VoiceSearch from './src/screens/VoiceSearch';
+import LensSearch from './src/screens/LensSearch';
+import ImageSearchScreen from './src/screens/ImageSearchScreen';
+import {FONT_FAMILY} from './src/utils/consts';
 
 type TTabIcon = {
   focused: boolean;
@@ -31,7 +34,15 @@ const TabIcon = ({focused, icon, color, size}: TTabIcon) => {
   );
 };
 
-const Stack = createNativeStackNavigator();
+export type RootStackParamList = {
+  LensSearch: undefined;
+  HomeScreen: undefined;
+  ImageSearchScreen: {imageUrl: string};
+  SearchScreen: undefined;
+  VoiceSearch: undefined;
+};
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const Tab = createBottomTabNavigator();
 
@@ -53,6 +64,9 @@ function Tabs() {
         tabBarActiveTintColor: COLORS.primary,
         tabBarInactiveTintColor: COLORS.secondary,
         tabBarShowLabel: showLabel,
+        tabBarLabelStyle: {
+          fontFamily: FONT_FAMILY.MEDIUM,
+        },
         tabBarIcon: ({color, size, focused}) => {
           switch (route.name) {
             case 'Home':
@@ -100,6 +114,8 @@ const AppStack = () => {
       <Stack.Group screenOptions={{presentation: 'fullScreenModal'}}>
         <Stack.Screen name="SearchScreen" component={SearchScreen} />
         <Stack.Screen name="VoiceSearch" component={VoiceSearch} />
+        <Stack.Screen name="LensSearch" component={LensSearch} />
+        <Stack.Screen name="ImageSearchScreen" component={ImageSearchScreen} />
       </Stack.Group>
     </Stack.Navigator>
   );

@@ -6,6 +6,7 @@ import {Text} from '@react-navigation/elements';
 import COLORS from '../utils/colors';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {useNavigation} from '@react-navigation/native';
+import {FONT_FAMILY} from '../utils/consts';
 
 const VoiceSearch = () => {
   const navigation = useNavigation();
@@ -73,7 +74,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     color: COLORS.secondary,
-    fontWeight: 'semibold',
+    fontFamily: FONT_FAMILY.MEDIUM,
   },
   voiceSearchLottie: {
     width: 200,
@@ -92,6 +93,7 @@ const styles = StyleSheet.create({
   },
   searchSongText: {
     color: COLORS.secondary,
+    fontFamily: FONT_FAMILY.REGULAR,
     fontSize: 14,
   },
 });

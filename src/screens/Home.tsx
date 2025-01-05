@@ -6,6 +6,7 @@ import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs
 import SearchTab from '../components/Home/SearchTab';
 import GeminiTab from '../components/Home/GeminiTab';
 import TabBarLabel from '../components/Home/TabBarLabel';
+import Avatar from '../components/Avatar';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -47,7 +48,7 @@ const Home = () => {
       </Tab.Navigator>
       <View style={styles.header}>
         <Icon name="flask" size={30} color={COLORS.primary} />
-        <Icon name="bell" size={30} color={COLORS.primary} />
+        <Avatar name="Mohit Kumar" />
       </View>
     </View>
   );
