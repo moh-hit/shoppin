@@ -6,7 +6,7 @@ import {
   Dimensions,
   Image,
 } from 'react-native';
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   Camera,
   useCameraDevice,
@@ -37,6 +37,8 @@ const LensSearch = () => {
     ],
   });
 
+  const [flash, toggleFlash] = useState<'off' | 'on'>('off');
+
   useEffect(() => {
     if (!hasPermission) {
       requestPermission();
@@ -53,6 +55,7 @@ const LensSearch = () => {
   const onClickPhoto = async () => {
     const photo = await cameraRef.current?.takePhoto({
       enableShutterSound: true,
+      flash,
     });
     const result = await fetch(`file://${photo?.path}`);
     const data = await result.blob();
@@ -68,6 +71,14 @@ const LensSearch = () => {
     console.log('Open gallery');
   };
 
+  const onPressBack = () => {
+    navigation.goBack();
+  };
+
+  const onToggleFlash = () => {
+    toggleFlash(prev => (prev === 'off' ? 'on' : 'off'));
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.cameraContainer}>
@@ -78,6 +89,18 @@ const LensSearch = () => {
           photo
           ref={cameraRef}
         />
+        <View style={styles.header}>
+          <TouchableOpacity onPress={onPressBack}>
+            <Icon name="chevron-left" size={32} color={COLORS.text} />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={onToggleFlash}>
+            <Icon
+              name={flash ? 'flash' : 'flash-off'}
+              size={24}
+              color={COLORS.text}
+            />
+          </TouchableOpacity>
+        </View>
         <Image source={viewfinder} style={styles.viewfinder} />
         <TouchableOpacity onPress={onPressGallery} style={styles.galleryIcon}>
           <Icon name="image-outline" size={24} color={COLORS.text} />
@@ -112,6 +135,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
+  },
+  header: {
+    position: 'absolute',
+    top: 16,
+    flexDirection: 'row',
+    width: '100%',
+    alignItems: 'center',
+    gap: 20,
+    paddingHorizontal: 8,
   },
   cameraContainer: {
     position: 'relative',

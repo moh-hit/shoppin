@@ -31,7 +31,7 @@ const Home = () => {
           tabBarStyle: {
             backgroundColor: COLORS.background,
             justifyContent: 'center',
-            width: SCREEN_WDITH * 0.32,
+            width: SCREEN_WDITH * 0.34,
             height: 50,
             borderRadius: 12,
             paddingHorizontal: 4,
