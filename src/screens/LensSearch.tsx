@@ -30,11 +30,7 @@ const LensSearch = () => {
   const cameraRef = React.useRef<Camera>(null);
   const {hasPermission, requestPermission} = useCameraPermission();
   const device = useCameraDevice('back', {
-    physicalDevices: [
-      'ultra-wide-angle-camera',
-      'wide-angle-camera',
-      'telephoto-camera',
-    ],
+    physicalDevices: ['wide-angle-camera', 'telephoto-camera'],
   });
 
   const [flash, toggleFlash] = useState<'off' | 'on'>('off');
@@ -95,7 +91,7 @@ const LensSearch = () => {
           </TouchableOpacity>
           <TouchableOpacity onPress={onToggleFlash}>
             <Icon
-              name={flash ? 'flash' : 'flash-off'}
+              name={flash === 'on' ? 'flash' : 'flash-off'}
               size={24}
               color={COLORS.text}
             />
